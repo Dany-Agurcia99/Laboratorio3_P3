@@ -8,7 +8,7 @@ using std::string;
 using std::stringstream;
 #include <stdio.h>
 int op1(int,int);
-string op2(int,int,string,int*);
+void op2(int,int,string,int*);
 void op3();
 int* CalculadoraPrimos(int);
 int main(){
@@ -50,13 +50,11 @@ int opcion=0;
                                 cout<<"Eligio opcion 2"<<endl;
 				cout<<"****************"<<endl;
 				int* primos = CalculadoraPrimos(25);
-				cout<<primos[3]<<" posicion de primos "<<endl;
 				int numero;
 				string salida="";
 				cout<<"Ingrese numero a calcular: "<<endl;
 				cin>>numero;
-				salida = op2(0,numero,salida,primos);
-				cout<<"El numero ingresado se obtiene de la siguiente manera: "<<salida<< endl;
+				op2(0,numero,salida,primos);
 				if(primos!=NULL){
                 			delete[] primos;
         			}
@@ -83,24 +81,21 @@ int op1(int num_a,int num_b){
 	}
 }
 
-string op2(int posicion,int numero,string salida,int* arreglo){
-	int contador=0;
-	int res=0;
-	while(res==0){
-		numero=numero/arreglo[posicion];
-		res=numero%arreglo[posicion];
-		contador++;
+void op2(int posicion,int numero,string salida,int* arreglo){
+	while(numero!=1){
+		int contador=0;
+		while(numero%arreglo[posicion]==0){
+			numero=numero/arreglo[posicion];
+                	contador++;
+        	}
+		if(contador!=0){
+                	stringstream stream1;
+                	stream1<<salida<<"("<<arreglo[posicion]<<"^"<<contador<<")";
+                	salida=stream1.str();
+        	}
+		posicion++;
 	}
-	if(contador!=0){
-		stringstream stream1;
-		stream1<<salida<<"("<<arreglo[posicion]<<"^"<<contador<<")";
-		salida=stream1.str();
-	}
-	if(numero==1){
-		return salida;
-	}else{
-		op2(posicion+1,numero,salida,arreglo);
-	}
+	cout<<"El numero es obtenido de la siguiente forma: "<<salida<<endl;
 }
 
 
