@@ -2,11 +2,16 @@
 using std::cout;
 using std::cin;
 using std::endl;
+
 #include <string>
 using std::string;
+
 #include <sstream>
 using std::stringstream;
-#include <stdio.h>
+
+#include <vector>
+using namespace std;
+
 int op1(int,int);
 void op2(int,int,string,int*);
 void op3();
@@ -99,7 +104,51 @@ void op2(int posicion,int numero,string salida,int* arreglo){
 }
 
 
-void op3(){}
+void op3(){
+	int opcion2=0;
+        while(opcion2!=5){
+                cout<<"     Menu"<<endl
+                <<"1-Insertar Guerra"<<endl
+                <<"2-Buscar Guerra"<<endl
+                <<"3-Eliminar Guerra"<<endl
+                <<"4-Listar Guerra"<<endl
+		<<"5-Salir"<<endl;
+                cout<<"Ingrese una opcion: ";
+                cin>>opcion2;
+                switch(opcion2){
+                        case 1:
+                                cout<<"Eligio Insertar Guerra"<<endl;
+                                
+                                break;
+                        case 2:
+                                cout<<"Eligio Buscar Guerra"<<endl;
+                                
+                                break;
+                        case 3:
+                                cout<<"Eligio Eliminar Guerra"<<endl;
+                                
+                                break;
+                        case 4:
+				{
+                                cout<<"Eligio Listar Guerras"<<endl;
+				int op;
+				cout<<"1-Listar todo"<<endl
+			<<"2-Listar por continente"<<endl;
+				cout<<"Ingrese una opcion: ";
+			  	cin>>op;
+				switch(op){
+					case 1:
+						cout<<"Eligio Listar todo"<<endl;
+						break;
+					case 2:
+						cout<<"Eligio Listar por Continente"<<endl;
+						break;	
+				}
+				}	
+                                break;
+                }
+        }
+}
 
 
 int* CalculadoraPrimos(int tam){
